@@ -1559,7 +1559,7 @@ LOAD E:/14.3 rel1/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m+fp/hard\libgcc
  .debug_ranges  0x000005e8       0x10 build/bsp_usart.o
  .debug_ranges  0x000005f8       0x20 build/startup_stm32f407xx.o
 
-.debug_line     0x00000000     0x6ec9
+.debug_line     0x00000000     0x6ecc
  .debug_line    0x00000000      0x2fe build/main.o
  .debug_line    0x000002fe      0x101 build/gpio.o
  .debug_line    0x000003ff      0x29e build/usart.o
@@ -1572,8 +1572,8 @@ LOAD E:/14.3 rel1/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m+fp/hard\libgcc
  .debug_line    0x00005db1      0x7e2 build/stm32f4xx_hal_cortex.o
  .debug_line    0x00006593      0x51f build/stm32f4xx_hal.o
  .debug_line    0x00006ab2      0x205 build/system_stm32f4xx.o
- .debug_line    0x00006cb7      0x19f build/bsp_usart.o
- .debug_line    0x00006e56       0x73 build/startup_stm32f407xx.o
+ .debug_line    0x00006cb7      0x1a2 build/bsp_usart.o
+ .debug_line    0x00006e59       0x73 build/startup_stm32f407xx.o
 
 .debug_str      0x00000000     0x2433
  .debug_str     0x00000000     0x2433 build/main.o

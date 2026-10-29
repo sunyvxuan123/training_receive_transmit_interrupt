@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s 			page 1
+ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -29,18 +29,20 @@ ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s 			page 1
   27              	HAL_UART_RxCpltCallback:
   28              	.LVL0:
   29              	.LFB137:
-   1:bsp/bsp_usart.c **** #include<stdio.h>
+   1:bsp/bsp_usart.c **** #include <stdio.h>
    2:bsp/bsp_usart.c **** #include "main.h"
    3:bsp/bsp_usart.c **** #include "usart.h"
    4:bsp/bsp_usart.c **** #include "gpio.h"
    5:bsp/bsp_usart.c **** #include "bsp_usart.h"
-   6:bsp/bsp_usart.c ****     uint8_t Receive_Data[8];
-   7:bsp/bsp_usart.c ****    void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-  30              		.loc 1 7 59 view -0
+   6:bsp/bsp_usart.c **** uint8_t Receive_Data[8];
+   7:bsp/bsp_usart.c **** uint8_t res[8];
+   8:bsp/bsp_usart.c **** void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+   9:bsp/bsp_usart.c **** {
+  30              		.loc 1 9 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 7 59 is_stmt 0 view .LVU1
+  34              		.loc 1 9 1 is_stmt 0 view .LVU1
   35 0000 38B5     		push	{r3, r4, r5, lr}
   36              	.LCFI0:
   37              		.cfi_def_cfa_offset 16
@@ -49,59 +51,106 @@ ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s 			page 1
   40              		.cfi_offset 5, -8
   41              		.cfi_offset 14, -4
   42 0002 0446     		mov	r4, r0
-   8:bsp/bsp_usart.c ****     HAL_UART_Receive_IT(huart, Receive_Data, 2);
-  43              		.loc 1 8 5 is_stmt 1 view .LVU2
-  44 0004 054D     		ldr	r5, .L3
-  45 0006 0222     		movs	r2, #2
+  10:bsp/bsp_usart.c ****     HAL_UART_Receive_IT(huart, Receive_Data, 4);
+  43              		.loc 1 10 5 is_stmt 1 view .LVU2
+  44 0004 0A4D     		ldr	r5, .L5
+  45 0006 0422     		movs	r2, #4
   46 0008 2946     		mov	r1, r5
   47 000a FFF7FEFF 		bl	HAL_UART_Receive_IT
   48              	.LVL1:
-   9:bsp/bsp_usart.c ****     HAL_UART_Transmit_IT(huart, Receive_Data, 2);
-  49              		.loc 1 9 5 view .LVU3
-ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s 			page 2
+ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s 			page 2
 
 
-  50 000e 0222     		movs	r2, #2
-  51 0010 2946     		mov	r1, r5
-  52 0012 2046     		mov	r0, r4
-  53 0014 FFF7FEFF 		bl	HAL_UART_Transmit_IT
-  54              	.LVL2:
-  10:bsp/bsp_usart.c ****    }...
-  55              		.loc 1 10 4 is_stmt 0 view .LVU4
-  56 0018 38BD     		pop	{r3, r4, r5, pc}
-  57              	.LVL3:
-  58              	.L4:
-  59              		.loc 1 10 4 view .LVU5
-  60 001a 00BF     		.align	2
-  61              	.L3:
-  62 001c 00000000 		.word	Receive_Data
-  63              		.cfi_endproc
-  64              	.LFE137:
-  66              		.global	Receive_Data
-  67              		.section	.bss.Receive_Data,"aw",%nobits
-  68              		.align	2
-  71              	Receive_Data:
-  72 0000 00000000 		.space	8
-  72      00000000 
-  73              		.text
-  74              	.Letext0:
-  75              		.file 2 "E:/14.3 rel1/arm-none-eabi/include/machine/_default_types.h"
-  76              		.file 3 "E:/14.3 rel1/arm-none-eabi/include/sys/_stdint.h"
-  77              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
-  78              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
-  79              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
-  80              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
-  81              		.file 8 "bsp/bsp_usart.h"
-ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s 			page 3
+  11:bsp/bsp_usart.c ****     if (Receive_Data[0] == 'A' && Receive_Data[1] == 'B')
+  49              		.loc 1 11 5 view .LVU3
+  50              		.loc 1 11 21 is_stmt 0 view .LVU4
+  51 000e 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+  52              		.loc 1 11 8 view .LVU5
+  53 0010 412B     		cmp	r3, #65
+  54 0012 00D0     		beq	.L4
+  55              	.L1:
+  12:bsp/bsp_usart.c ****     {
+  13:bsp/bsp_usart.c ****         res[0] = Receive_Data[1];
+  14:bsp/bsp_usart.c ****         res[1] = Receive_Data[2];
+  15:bsp/bsp_usart.c ****         HAL_UART_Transmit_IT(huart, res, 2);
+  16:bsp/bsp_usart.c ****     }
+  17:bsp/bsp_usart.c **** }...
+  56              		.loc 1 17 1 view .LVU6
+  57 0014 38BD     		pop	{r3, r4, r5, pc}
+  58              	.LVL2:
+  59              	.L4:
+  11:bsp/bsp_usart.c ****     if (Receive_Data[0] == 'A' && Receive_Data[1] == 'B')
+  60              		.loc 1 11 47 discriminator 1 view .LVU7
+  61 0016 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+  11:bsp/bsp_usart.c ****     if (Receive_Data[0] == 'A' && Receive_Data[1] == 'B')
+  62              		.loc 1 11 32 discriminator 1 view .LVU8
+  63 0018 422B     		cmp	r3, #66
+  64 001a FBD1     		bne	.L1
+  13:bsp/bsp_usart.c ****         res[0] = Receive_Data[1];
+  65              		.loc 1 13 9 is_stmt 1 view .LVU9
+  13:bsp/bsp_usart.c ****         res[0] = Receive_Data[1];
+  66              		.loc 1 13 16 is_stmt 0 view .LVU10
+  67 001c 0549     		ldr	r1, .L5+4
+  68 001e 0B70     		strb	r3, [r1]
+  14:bsp/bsp_usart.c ****         res[1] = Receive_Data[2];
+  69              		.loc 1 14 9 is_stmt 1 view .LVU11
+  14:bsp/bsp_usart.c ****         res[1] = Receive_Data[2];
+  70              		.loc 1 14 30 is_stmt 0 view .LVU12
+  71 0020 AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+  14:bsp/bsp_usart.c ****         res[1] = Receive_Data[2];
+  72              		.loc 1 14 16 view .LVU13
+  73 0022 4B70     		strb	r3, [r1, #1]
+  15:bsp/bsp_usart.c ****         HAL_UART_Transmit_IT(huart, res, 2);
+  74              		.loc 1 15 9 is_stmt 1 view .LVU14
+  75 0024 0222     		movs	r2, #2
+  76 0026 2046     		mov	r0, r4
+  77 0028 FFF7FEFF 		bl	HAL_UART_Transmit_IT
+  78              	.LVL3:
+  79              		.loc 1 17 1 is_stmt 0 view .LVU15
+  80 002c F2E7     		b	.L1
+  81              	.L6:
+  82 002e 00BF     		.align	2
+  83              	.L5:
+  84 0030 00000000 		.word	Receive_Data
+  85 0034 00000000 		.word	res
+  86              		.cfi_endproc
+  87              	.LFE137:
+  89              		.global	res
+  90              		.section	.bss.res,"aw",%nobits
+  91              		.align	2
+ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s 			page 3
+
+
+  94              	res:
+  95 0000 00000000 		.space	8
+  95      00000000 
+  96              		.global	Receive_Data
+  97              		.section	.bss.Receive_Data,"aw",%nobits
+  98              		.align	2
+ 101              	Receive_Data:
+ 102 0000 00000000 		.space	8
+ 102      00000000 
+ 103              		.text
+ 104              	.Letext0:
+ 105              		.file 2 "E:/14.3 rel1/arm-none-eabi/include/machine/_default_types.h"
+ 106              		.file 3 "E:/14.3 rel1/arm-none-eabi/include/sys/_stdint.h"
+ 107              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 108              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 109              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 110              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 111              		.file 8 "bsp/bsp_usart.h"
+ARM GAS  C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 bsp_usart.c
-C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s:21     .text.HAL_UART_RxCpltCallback:00000000 $t
-C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s:27     .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
-C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s:62     .text.HAL_UART_RxCpltCallback:0000001c $d
-C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s:71     .bss.Receive_Data:00000000 Receive_Data
-C:\Users\sun12\AppData\Local\Temp\ccQFhR9y.s:68     .bss.Receive_Data:00000000 $d
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:21     .text.HAL_UART_RxCpltCallback:00000000 $t
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:27     .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:84     .text.HAL_UART_RxCpltCallback:00000030 $d
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:101    .bss.Receive_Data:00000000 Receive_Data
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:94     .bss.res:00000000 res
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:91     .bss.res:00000000 $d
+C:\Users\sun12\AppData\Local\Temp\ccZAsQ9x.s:98     .bss.Receive_Data:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Receive_IT

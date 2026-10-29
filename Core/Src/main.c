@@ -90,7 +90,7 @@ int main(void)
   MX_GPIO_Init();
   MX_UART4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart4, Receive_Data, 2);
+  HAL_UART_Receive_IT(&huart4, Receive_Data, 4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
